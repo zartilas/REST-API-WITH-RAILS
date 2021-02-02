@@ -55,9 +55,8 @@ RSpec.configure do |config|
    # add `FactoryBot` methods
   config.include FactoryBot::Syntax::Methods
 
-  config.include RequestSpecHelper, type: :request
-  config.include RequestSpecHelper
-  config.include ControllerSpecHelper
+  #config.include RequestSpecHelper, type: :request
+
    # start by truncating all the tables but then use the faster transaction strategy the rest of the time.
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -85,7 +84,8 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
+  config.include RequestSpecHelper
+  config.include ControllerSpecHelper
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
